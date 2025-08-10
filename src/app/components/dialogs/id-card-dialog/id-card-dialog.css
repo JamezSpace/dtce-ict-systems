@@ -1,0 +1,172 @@
+:host {
+    --passport-container-height: 2.5in;
+    --cr80-standard-width: 2.125in;
+    --cr80-standard-height: 3.375in;
+    --scaling: 1.75;
+}
+
+#id-card {
+    width: calc(var(--cr80-standard-width) * var(--scaling));
+    height: calc(var(--cr80-standard-height) * var(--scaling));
+    position: relative;
+    border-radius: 8px;
+    align-content: center;
+}
+
+
+.image-bg {
+    background: url('/id-card-bg.JPG');
+    background-size: cover;
+    margin-inline: auto;
+    color: #fff;
+}
+
+.front-part {
+    display: grid;
+    grid-template-areas: "logo"
+        "workers-text"
+        "passport-section"
+        "information-section"
+        "footer";
+    grid-template-rows: 10% 8% 45% 32% 5%;
+
+    &>img {
+        grid-area: logo;
+        justify-self: center;
+    }
+
+    &>h3 {
+        grid-area: workers-text;
+        align-self: flex-start;
+        justify-self: center;
+    }
+
+    &>.box-container {
+        grid-area: passport-section;
+        align-self: flex-start;
+    }
+
+    &>.information-section {
+        grid-area: information-section;
+    }
+
+    &>p {
+        grid-area: footer;
+        justify-self: center;
+        align-self: self-end;
+        font-size: 90%;
+    }
+}
+
+.box-container {
+    position: relative;
+    width: 100%;
+
+    .passport-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%);
+        z-index: 1;
+    }
+
+    .pseudo-box {
+        position: absolute;
+        right: 30px;
+        top: 7px;
+        z-index: 0;
+    }
+
+    .gender-box {
+        position: absolute;
+        right: 25px;
+        top: calc(var(--passport-container-height) - 25px);
+        /* top: calc(var(--cr80-standard-height) * var(--scaling) / 3.5); */
+        z-index: 2;
+    }
+}
+
+.passport-container {
+    border: 2px solid #fff;
+    border-radius: 5px;
+    /* width: 60%; */
+    width: 75%;
+    height: var(--passport-container-height);
+    /* height: 1fr; */
+}
+
+.passport-container>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pseudo-box {
+    border-radius: 5px;
+    border: 2px solid #fff;
+    width: 75%;
+    height: var(--passport-container-height);
+    background-color: var(--accent);
+}
+
+.gender-box {
+    border: 2px solid #fff;
+    border-radius: 5px;
+    font-size: 1.75em;
+    text-transform: uppercase;
+    background-color: var(--accent);
+    padding: 10px;
+}
+
+.information-section {
+    width: 100%;
+    /* margin-inline: auto; */
+
+    &>p {
+        margin-bottom: 3.5%;
+        font-size: 1.2em;
+
+        &:first-of-type {
+            margin-bottom: 8.5%;
+        }
+
+        &:not(:first-of-type) {
+            padding-inline: 10%;
+        }
+    }
+
+    &>p span {
+        font-weight: bold;
+    }
+}
+
+.back-part {
+    margin-block: auto;
+    display: grid;
+    grid-template-areas: "logo"
+        "regular-text"
+        "department-qr-code"
+        "coordinators-sign";
+    grid-template-rows: 10% 35% 30% 15%;
+
+    &>img:first-of-type {
+        grid-area: logo;
+        justify-self: center;
+    }
+
+    &>p {
+        grid-area: regular-text;
+        justify-self: center;
+        align-content: center;
+    }
+
+    &>img:nth-of-type(2) {
+        grid-area: department-qr-code;
+        justify-self: center;
+    }
+
+    & > section {
+        grid-area: coordinators-sign;
+        justify-self: center;
+    }
+}

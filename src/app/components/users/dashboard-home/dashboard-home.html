@@ -1,0 +1,45 @@
+<!-- <section class="">
+    <p>This is Day {{ todayDay }} of the convention</p>
+
+    <h2>This is Day 3 of the
+        <span class="uppercase primary">convention</span>
+    </h2>
+</section> -->
+
+<!-- that is, user hasnt updated his profile, mostly still a fresh login -->
+@if (!userData()?.gender) {
+<div class="my-flex flex-col items-center">
+    <h1 class="big-text pt-10">Hello there,
+        <span class="capitalize">{{ userData()?.firstName }}</span>!
+    </h1>
+
+    <p class="semi-big-text mb-3.5">Let's get started with updating your profile</p>
+
+    <button class="my-button" (click)="openUpdateProfileData()">update my profile data</button>
+</div>
+} @else {
+<h1 class="big-text pt-7">Welcome back,
+    <span class="capitalize">{{ userData()?.firstName }}</span>!
+</h1>
+
+<p class="semi-big-text">
+    It is day {{ day_of_convention }} of the convention
+</p>
+<div class="sign-in-status my-5 pattern h-50 my-rounded relative">
+    <h2 class="absolute left-5 bottom-5 z-[2] text-white">
+        <!-- {{ signInStatusText() }} -->
+
+    </h2>
+    <button class="capitalize px-5 py-3 my-rounded sign-in-btn text-white absolute right-5 bottom-5 z-[2]">
+        <!-- {{ signInActionText() }} -->
+    </button>
+</div>
+
+<!-- <app-tasks-overview /> -->
+
+<p class="capitalize cursor-pointer py-2.5 mt-16 inline-block underline underline-offset-2 font-medium nav-link"
+    (click)="navigateToAttendance()">view my
+    attendance
+    history</p>
+
+}

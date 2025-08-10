@@ -1,0 +1,19 @@
+h1 {
+    color: var(--primary);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+
+    th {
+        text-align: left;
+    }
+
+    th,
+    td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+}

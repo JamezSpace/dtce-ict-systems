@@ -1,0 +1,54 @@
+.section-descriptor {
+    text-transform: capitalize;
+    font-size: 110%;
+}
+
+.row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    /* max-width: 50vw; */
+}
+
+.bg-primary {
+    &:first-of-type {
+        background-color: var(--secondary-shade-1);
+        background-size: 10% cover;
+        background-repeat: no-repeat;
+        background-position: 50% 45%;
+        color: var(--neutral-foreground);
+    }
+
+    &:nth-of-type(2) {
+        background-color: var(--primary-shade-1);
+        color: var(--neutral-foreground);
+    }
+
+    &:first-of-type:hover {
+        background-color: var(--secondary);
+        color: var(--neutral-background);
+    }
+
+    &:nth-of-type(2):hover {
+        background-color: var(--primary);
+        color: var(--neutral-background);
+    }
+
+}
+
+.card {
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 200ms ease;
+    flex: 1;
+}
+
+@media screen and (max-width: 48rem) {
+    .row {
+        max-width: 100%;
+
+        &:nth-of-type(2) .card {
+            flex: 1 0 calc(50vw - 40px);
+        }
+    }
+}

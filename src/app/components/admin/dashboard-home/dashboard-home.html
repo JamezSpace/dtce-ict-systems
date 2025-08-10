@@ -1,0 +1,34 @@
+<h1 class="pt-7 capitalize">overview</h1>
+
+<section class="my-flex gap-3 flex-wrap">
+    <article class="tab custom-box-shadow">
+        <h2 class="capitalize">Total users</h2>
+        <p class="big-text">{{ total_users() }}</p>
+    </article>
+    <article class="tab custom-box-shadow">
+        <h2 class="capitalize">active guests</h2>
+        <p class="big-text">--</p>
+    </article>
+    <article class="tab custom-box-shadow">
+        <h2 class="capitalize">iCT Subunits</h2>
+        <p class="big-text">{{ subunits().length }}</p>
+    </article>
+    <article class="tab custom-box-shadow">
+        <h2 class="capitalize">Early Clock-in</h2>
+        <p class="big-text">{{ getClockInStats.early }}</p>
+    </article>
+    <article class="tab custom-box-shadow">
+        <h2 class="capitalize">Late Clock-in</h2>
+        <p class="big-text">{{ getClockInStats.late }}</p>
+    </article>
+</section>
+
+<h2 class="capitalize mt-7 mb-3.5">recent activity</h2>
+<section class="logs-container">
+    <article class="log">
+        <p>"Someone" just signed in</p>
+    </article>
+    <article class="log">
+        <p>"Someone" clocked out</p>
+    </article>
+</section>

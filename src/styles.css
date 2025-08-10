@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import "tailwindcss";
+
+:root {
+    color-scheme: light dark;
+    --primary: hsl(240, 100%, 36%);
+    --primary-shade-1: #bdbdff;
+    --secondary: hsl(0, 96%, 43%);
+    --secondary-shade-1: #fec8c8;
+    --accent: hsl(267, 30%, 50%);
+    --neutral-foreground: #1a1c2c;
+    --neutral-background: #f9f9f9;
+}
+
+.my-flex {
+    display: flex;
+    align-items: center;
+}
+
+html,
+body {
+    height: 100%;
+    color: var(--neutral-foreground);
+    background-color: var(--neutral-background);
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+input,
+textarea {
+    outline: none;
+}
+
+select {
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 500;
+}
+
+h1 {
+    font-size: 1.5em;
+    line-height: 1.5em;
+    margin-block: 5px 20px;
+}
+
+h2 {
+    font-size: 1.2em;
+    line-height: 1.2em;
+}
+
+.maxi-text {
+    font-size: 2.25em;
+}
+
+.big-text {
+    font-size: 1.75em;
+}
+
+.semi-big-text {
+    font-size: 1.25em;
+}
+
+.mat-mdc-notch-piece.mdc-notched-outline__notch {
+    border-inline: none;
+}
+
+.my-button {
+    --bg-color: var(--primary);
+
+    padding: 10px 20px;
+    white-space: nowrap;
+    gap: 8px;
+    border: 1px solid var(--bg-color);
+    border-radius: 0.5rem;
+    font-size: 90%;
+    background-color: var(--bg-color);
+    color: var(--neutral-background);
+    font-weight: 400;
+    text-transform: capitalize;
+    transition-property: background-color, outline;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &:hover {
+        --bg-color: hsl(from var(--primary) h s calc(l - 10));
+
+        background-color: var(--bg-color);
+    }
+
+    &:focus {
+        outline: 1px solid #333;
+    }
+
+    &.disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    &.red {
+        background-color: var(--secondary);
+        border-color: var(--secondary);
+        color: white;
+    }
+
+    &.red:hover {
+        background-color: hsl(from var(--secondary) h s calc(l - 10));
+    }
+}
+
+.my-button.secondary {
+    background-color: transparent;
+    color: var(--primary);
+
+    &:hover {
+        outline: 1px solid var(--primary);
+    }
+
+    &.red {
+        border-color: var(--seconary);
+        color: var(--seconary);
+    }
+}
+
+.my-rounded {
+    border-radius: 8px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+
+    th {
+        text-align: left;
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+
+    th,
+    td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+}
+
+.custom-box-shadow {
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+.dialog-responsive {
+    width: 80vw;
+    max-height: 80vh;
+    overflow: auto;
+}
+
+@media screen and (max-width : 48rem) {
+    .dialog-responsive {
+        width: 80vw;
+        max-height: 90vh !important;
+    }
+}
+
+@media screen and (max-width : 40rem) {
+    .dialog-responsive {
+        width: 100%;
+        height: 100%;
+        max-width: 95vw !important;
+        max-height: 90vh !important;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --neutral-foreground: #f9f9f9;
+        --neutral-background: #1a1c2c;
+    }
+
+    .custom-box-shadow {
+        box-shadow:
+            rgba(255, 255, 255, 0.03) 0px 1px 3px 0px,
+            rgba(255, 255, 255, 0.15) 0px 0px 0px 1px;
+    }
+}

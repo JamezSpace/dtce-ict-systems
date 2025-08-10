@@ -1,0 +1,59 @@
+<h1 class="pt-7 uppercase">Attendance</h1>
+<div class="my-3 5">
+    @if (clocked_in_today()) {
+    <button class="my-button" (click)="toggleClockState()">
+        Clock Out
+    </button>
+    } @else {
+    <button class="my-button" (click)="toggleClockState()">
+        Clock In
+    </button>
+    }
+</div>
+
+<p>View you attendance records and filter by status</p>
+
+
+<h3 class="my-3.5">Status</h3>
+<select class="border py-3 px-5 rounded-[5px]">
+    <option>Filter by status</option>
+    @for (status of statuses; track $index) {
+    <option value="{{ status }}">{{ status }}</option>
+    }
+</select>
+
+<div class="overflow-x-auto mt-8 mb-5 min-h-20">
+    <table class="relative">
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Sign-in Time</th>
+                <th>Sign-out Time</th>
+                <th>Duration</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (loading()) {
+            <mat-spinner [diameter]="30" class="mx-auto"></mat-spinner>
+            } @else {
+            @for (data of attendances(); track $index) {
+            <tr>
+                <td>{{ data.day }}</td>
+                <td>{{ data.clockInTime || 'null' }}</td>
+                <td>{{ data.clockOutTime || 'null' }}</td>
+                <td>{{ duration(data.clockInTime, data.clockOutTime) }}</td>
+                <td>null</td>
+            </tr>
+            } @empty {
+            <tr>
+                <td colspan="5" class="text-gray-700">
+                    <p class="text-center my-5">nothing here</p>
+                </td>
+            </tr>
+            }
+            }
+        </tbody>
+
+    </table>
+</div>

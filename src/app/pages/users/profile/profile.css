@@ -1,0 +1,78 @@
+article.grid {
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+}
+
+.field {
+    flex: 1;
+
+    &>label {
+        text-transform: capitalize;
+        color: #666;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    &>p:not(.email) {
+        text-transform: uppercase;
+    }
+
+    &>input {
+        padding: 5px 8px;
+        border: 1px solid #000;
+        border-radius: 5px;
+        width: 100%;
+    }
+}
+
+.grid-container {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: calc(30% - 7.5px) calc(70% - 7.5px);
+    grid-template-areas: "left right";
+
+    .personal {
+        grid-area: left;
+    }
+
+    .personal-expanded {
+        grid-area: right;
+    }
+}
+
+.profile-pic {
+    position: relative;
+    cursor: pointer;
+    transition: opacity 200ms ease;
+
+    & > button {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(3.5px);
+        opacity: 0;
+        border-radius: 50%;
+        font-size: 2.5em;
+        color: var(--neutral-foreground);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &:hover > button {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 40rem) {
+    .grid-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    article.grid {
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+    }
+}

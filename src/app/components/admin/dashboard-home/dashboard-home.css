@@ -1,0 +1,26 @@
+.tab {
+    border-radius: 0.5rem;
+    padding: 14px 10px;
+    padding-right: 50px;
+
+    & > h2 {
+        margin-bottom: 1.25rem;
+    }
+}
+
+.logs-container {
+
+    .log {
+        padding: 1rem;
+        border-top: 1px solid #333;
+        border-inline: none;
+    }
+
+    .log:first-of-type {
+        border-top: 1px solid #333;
+    }
+
+    .log:last-of-type {
+        border-bottom: 1px solid #333;
+    }
+}

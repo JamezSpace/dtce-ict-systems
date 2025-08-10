@@ -1,0 +1,60 @@
+<form class="p-7" [formGroup]="userData">
+    <h2 class="capitalize mb-5 big-text text-center">New User</h2>
+
+    <p class="mb-5 text-center">Fill in the details of the user...</p>
+
+    <mat-form-field appearance="outline">
+        <mat-label>User's First Name</mat-label>
+        <input type="text" matInput placeholder="enter the first name of the user..." formControlName="firstName">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>User's Last Name</mat-label>
+        <input type="text" matInput placeholder="enter the last name of the user..." formControlName="lastName">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>User Email</mat-label>
+        <input type="email" matInput placeholder="enter the email of the user..." formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>User Phone Number</mat-label>
+        <input type="text" matInput placeholder="enter the phone number of the user..." formControlName="phoneNum">
+    </mat-form-field>
+
+    @if (openedBy() === 'admin') {
+    <mat-form-field appearance="outline">
+        <mat-label>Select User Subunit</mat-label>
+        <!-- TODO -->
+        <mat-select [(value)]="selected_subunit">
+            <mat-option>None</mat-option>
+            @for (subunit of subunits(); track $index) {
+            <mat-option [value]="subunit._id">{{ subunit.name }}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Departmental Role</mat-label>
+        <!-- TODO -->
+        <mat-select [(value)]="departmental_role" (selectionChange)="onSelectChange($event)">
+            <mat-option>None</mat-option>
+            <mat-option value="member">member</mat-option>
+            <mat-option value="executive">executive</mat-option>
+            <mat-option value="ambassador">ambassador</mat-option>
+            <mat-option value="official">official</mat-option>
+            <mat-option value="custom">custom</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    @if (customDeptRole()) {
+    <mat-form-field appearance="outline">
+        <mat-label>Custom Role</mat-label>
+        <input type="text" matInput placeholder="enter a custom role..." [(ngModel)]="departmental_role" name="departmental_role">
+    </mat-form-field>
+    }
+    }
+
+    <button class="my-button w-full mt-3" (click)="saveData()">Save User</button>
+</form>
